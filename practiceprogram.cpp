@@ -53,3 +53,72 @@ int pivotedBinarySearch(int arr[], int n, int key)
   else
     return binarySearch(arr, pivot+1, n-1, key); 
 } 
+
+
+/*program to delete a linked list*/
+class Node  
+{  
+    public: 
+    int data;  
+    Node* next;  
+};  
+  
+void deleteList(Node** head_ref)  
+{  
+     
+Node* current = *head_ref;  
+Node* next;  
+  
+while (current != NULL)  
+{  
+    next = current->next;  
+    free(current);  
+    current = next;  
+}  
+      
+*head_ref = NULL;  
+}  
+ 
+void push(Node** head_ref, int new_data)  
+{  
+    Node* new_node = new Node(); 
+ 
+    new_node->data = new_data;  
+      
+    new_node->next = (*head_ref);  
+      
+    (*head_ref) = new_node;  
+}  
+
+
+
+/*implementation of selection sort*/
+void swap(int *xp, int *yp) 
+{ 
+    int temp = *xp; 
+    *xp = *yp; 
+    *yp = temp; 
+} 
+  
+void selectionSort(int arr[], int n) 
+{ 
+    int i, j, min_idx; 
+   
+    for (i = 0; i < n-1; i++) 
+    {  
+        min_idx = i; 
+        for (j = i+1; j < n; j++) 
+          if (arr[j] < arr[min_idx]) 
+            min_idx = j; 
+   
+        swap(&arr[min_idx], &arr[i]); 
+    } 
+} 
+ 
+void printArray(int arr[], int size) 
+{ 
+    int i; 
+    for (i=0; i < size; i++) 
+        printf("%d ", arr[i]); 
+    printf("\n"); 
+} 
