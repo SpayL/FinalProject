@@ -519,4 +519,114 @@ void single_llist::display()
     cout<<"NULL"<<endl;
 }
 
+/*8.HEAP SORT*/
 
+void heapify(int arr[], int n, int i)
+{
+    int largest = i; 
+    int l = 2*i + 1;
+    int r = 2*i + 2; 
+
+   
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
+    
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+
+   
+    if (largest != i)
+    {
+        swap(arr[i], arr[largest]);
+
+        
+	heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n)
+{
+ 
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    
+    for (int i=n-1; i>=0; i--)
+    {
+        
+        swap(arr[0], arr[i]);
+
+        
+        heapify(arr, i, 0);
+    }
+}
+
+
+void printArray(int arr[], int n)
+{
+    for (int i=0; i<n; ++i)
+        cout << arr[i] << " ";
+    cout << "\n";
+}
+
+//queue array implementation
+
+class Queue
+{
+    public:
+    int front, rear, size;
+    unsigned capacity;
+    int* array;
+};
+
+Queue* createQueue(unsigned capacity)
+{
+    Queue* queue = new Queue();
+    queue->capacity = capacity;
+    queue->front = queue->size = 0;
+    queue->rear = capacity - 1; // This is important, see the enqueue
+    queue->array = new int[(queue->capacity * sizeof(int))];
+    return queue;
+}
+
+int isFull(Queue* queue)
+{ return (queue->size == queue->capacity); }
+
+int isEmpty(Queue* queue)
+{ return (queue->size == 0); }
+
+void enqueue(Queue* queue, int item)
+{
+    if (isFull(queue))
+        return;
+    queue->rear = (queue->rear + 1) % queue->capacity;
+    queue->array[queue->rear] = item;
+    queue->size = queue->size + 1;
+    cout << item << " enqueued to queue\n";
+}
+
+
+int dequeue(Queue* queue)
+{
+    if (isEmpty(queue))
+        return INT_MIN;
+    int item = queue->array[queue->front];
+    queue->front = (queue->front + 1) % queue->capacity;
+    queue->size = queue->size - 1;
+    return item;
+}
+
+int front(Queue* queue)
+{
+    if (isEmpty(queue))
+        return INT_MIN;
+    return queue->array[queue->front];
+}
+
+int rear(Queue* queue)
+{
+    if (isEmpty(queue))
+        return INT_MIN;
+    return queue->array[queue->rear];
+}
