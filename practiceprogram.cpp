@@ -1,158 +1,113 @@
 #include <iostream>
+#include <bits/stdc++.h>
 using namespace std; 
-  //Program to search an element in a sorted and pivoted array
-int binarySearch(int arr[], int low,int high, int key) 
-{ 
+
+
+  //1.Program to search an element in a sorted and pivoted array
+
+int binarySearch(int arr[], int low,int high, int key) { 
   if (high < low) 
     return -1; 
-      
-  int mid = (low + high)/2; 
+ int mid = (low + high)/2; 
   if (key == arr[mid]) 
     return mid; 
-      
   if (key > arr[mid]) 
     return binarySearch(arr, (mid + 1), high, key); 
-      
- else
-    return binarySearch(arr, low, (mid -1), key); 
-} 
-  
-int findPivot(int arr[], int low, int high) 
-{ 
-   
+  else
+    return binarySearch(arr, low, (mid -1), key);} 
+
+
+  int findPivot(int arr[], int low, int high) { 
   if (high < low) return -1; 
   if (high == low) return low; 
-  
-   int mid = (low + high)/2; /*low + (high - low)/2;*/
+ int mid = (low + high)/2; /*low + (high - low)/2;*/
    if (mid < high && arr[mid] > arr[mid + 1]) 
     return mid; 
-      
-   if (mid > low && arr[mid] < arr[mid - 1]) 
+  if (mid > low && arr[mid] < arr[mid - 1]) 
     return (mid-1); 
-      
    if (arr[low] >= arr[mid]) 
     return findPivot(arr, low, mid-1); 
    else 
-   return findPivot(arr, mid + 1, high); 
-} 
+   return findPivot(arr, mid + 1, high);} 
   
 
-int pivotedBinarySearch(int arr[], int n, int key) 
-{ 
-  int pivot = findPivot(arr, 0, n-1); 
-  
- 
+int pivotedBinarySearch(int arr[], int n, int key) { 
+  int pivot = findPivot(arr, 0, n-1);
   if (pivot == -1) 
     return binarySearch(arr, 0, n-1, key); 
-  
-   if (arr[pivot] == key) 
+  if (arr[pivot] == key) 
     return pivot; 
-      
   if (arr[0] <= key) 
     return binarySearch(arr, 0, pivot-1, key); 
   else
-    return binarySearch(arr, pivot+1, n-1, key); 
-} 
+    return binarySearch(arr, pivot+1, n-1, key); } 
 
 
-/*program to delete a linked list*/
-class Node  
-{  
+/*2.program to delete a linked list*/
+
+class Node  {  
     public: 
     int data;  
-    Node* next;  
-};  
+    Node* next;  }; 
+
   
 void deleteList(Node** head_ref)  
-{  
-     
-Node* current = *head_ref;  
-Node* next;  
-  
-while (current != NULL)  
-{  
+{ Node* current = *head_ref;  
+Node* next;
+while (current != NULL)  {  
     next = current->next;  
     free(current);  
-    current = next;  
-}  
-      
-*head_ref = NULL;  
-}  
+    current = next;  }  
+*head_ref = NULL;  }  
  
-void push(Node** head_ref, int new_data)  
-{  
+void push(Node** head_ref, int new_data)  {  
     Node* new_node = new Node(); 
- 
-    new_node->data = new_data;  
-      
-    new_node->next = (*head_ref);  
-      
-    (*head_ref) = new_node;  
-}  
+     new_node->data = new_data;  
+      new_node->next = (*head_ref);  
+      (*head_ref) = new_node;  }  
 
 
+/*3.implementation of selection sort*/
 
-/*implementation of selection sort*/
-void swap(int *xp, int *yp) 
-{ 
+void swap(int *xp, int *yp) { 
     int temp = *xp; 
     *xp = *yp; 
-    *yp = temp; 
-} 
+    *yp = temp; } 
   
-void selectionSort(int arr[], int n) 
-{ 
+void selectionSort(int arr[], int n) { 
     int i, j, min_idx; 
-   
-    for (i = 0; i < n-1; i++) 
-    {  
+	for (i = 0; i < n-1; i++) {  
         min_idx = i; 
         for (j = i+1; j < n; j++) 
           if (arr[j] < arr[min_idx]) 
             min_idx = j; 
-   
-        swap(&arr[min_idx], &arr[i]); 
-    } 
-} 
- 
-void printArray(int arr[], int size) 
-{ 
+          swap(&arr[min_idx], &arr[i]);}  } 
+
+ void printArray(int arr[], int size) { 
     int i; 
     for (i=0; i < size; i++) 
         printf("%d ", arr[i]); 
-    printf("\n"); 
-}
+    printf("\n"); }
 
-//program to display students details
+//4.program to display students details
 
-class studentdetails 
-{
-    public:
+class studentdetails {
+  public:
     char name[30],clas[10];
     int rol,age;
-
-    void enter() 
-    { 
+	void enter() { 
         cout<<"Enter Student Name: "; cin>>name;    
         cout<<"Enter Student Age: "; cin>>age;        
         cout<<"Enter Student Roll number: "; cin>>rol;        
-        cout<<"Enter Student Class: "; cin>>clas;
-    }
+        cout<<"Enter Student Class: "; cin>>clas;}
     
-    void display() 
-    {
+    void display(){
         cout<<"\n Age\tName\tR.No.\tClass";
-        cout<<"\n"<<age<<"\t"<<name<<"\t"<<rol<<"\t"<<clas; 
- }
-};
+        cout<<"\n"<<age<<"\t"<<name<<"\t"<<rol<<"\t"<<clas;}};
 
-//program to find missing number
+//5.program to find missing number
 class gfg
-{
-
-
-public : int getMissingNo (int a[], int n)
-{
+{public : int getMissingNo (int a[], int n){
     int i, total;
     total = (n + 1) * (n + 2) / 2;
     for ( i = 0; i< n; i++)
@@ -161,7 +116,7 @@ public : int getMissingNo (int a[], int n)
 }
 };
 
-//program to reverse an array or string
+//6.program to reverse an array or string
 
 void rvereseArray(int arr[], int start, int end)
 {
@@ -180,11 +135,10 @@ void printArray(int arr[], int size)
 {
    for (int i = 0; i < size; i++)
    cout << arr[i] << " ";
-
-   cout << endl;
+ cout << endl;
 }
 
-//program to implement single link list
+//7.program to implement single link list
 
 struct node
 {
@@ -192,12 +146,8 @@ struct node
     struct node *next;
 }*start;
 
-/*
- * Class Declaration
- */
 class single_llist
-{
-    public:
+{ public:
         node* create_node(int);
         void insert_begin();
         void insert_pos();
@@ -214,12 +164,9 @@ class single_llist
         }
 };
 
-/*
- * Creating Node
- */
+
 node *single_llist::create_node(int value)
-{
-    struct node *temp, *s;
+{struct node *temp, *s;
     temp = new(struct node);
     if (temp == NULL)
     {
@@ -230,16 +177,12 @@ node *single_llist::create_node(int value)
     {
         temp->info = value;
         temp->next = NULL;
-        return temp;
-    }
+        return temp;}
 }
 
-/*
- * Inserting element in beginning
- */
+
 void single_llist::insert_begin()
-{
-    int value;
+{ int value;
     cout<<"Enter the value to be inserted: ";
     cin>>value;
     struct node *temp, *p;
@@ -258,9 +201,6 @@ void single_llist::insert_begin()
     cout<<"Element Inserted at beginning"<<endl;
 }
 
-/*
- * Inserting Node at last
- */
 void single_llist::insert_last()
 {
     int value;
@@ -278,9 +218,7 @@ void single_llist::insert_last()
     cout<<"Element Inserted at last"<<endl;
 }
 
-/*
- * Insertion of node at a given position
- */
+
 void single_llist::insert_pos()
 {
     int value, pos, counter = 0;
@@ -328,9 +266,7 @@ void single_llist::insert_pos()
     }
 }
 
-/*
- * Sorting Link List
- */
+
 void single_llist::sort()
 {
     struct node *ptr, *s;
@@ -356,9 +292,7 @@ void single_llist::sort()
     }
 }
 
-/*
- * Delete element at a given position
- */
+
 void single_llist::delete_pos()
 {
     int pos, i, counter = 0;
@@ -401,9 +335,7 @@ void single_llist::delete_pos()
     }
 }
 
-/*
- * Update a given Node
- */
+
 void single_llist::update()
 {
     int value, pos, i;
@@ -438,9 +370,7 @@ void single_llist::update()
     cout<<"Node Updated"<<endl;
 }
 
-/*
- * Searching an element
- */
+
 void single_llist::search()
 {
     int value, pos = 0;
@@ -468,9 +398,7 @@ void single_llist::search()
         cout<<"Element "<<value<<" not found in the list"<<endl;
 }
 
-/*
- * Reverse Link List
- */
+
 void single_llist::reverse()
 {
     struct node *ptr1, *ptr2, *ptr3;
@@ -498,9 +426,7 @@ void single_llist::reverse()
     start = ptr2;
 }
 
-/*
- * Display Elements of a link list
- */
+
 void single_llist::display()
 {
     struct node *temp;
@@ -570,7 +496,10 @@ void printArray(int arr[], int n)
     cout << "\n";
 }
 
+
 //queue array implementation
+
+//9.queue array implementation
 
 class Queue  
 {  
@@ -638,7 +567,7 @@ int rear(Queue* queue)
   
 
 
-//program for tree traversal
+//10.program for tree traversal
 
 struct Node 
 { 
@@ -685,7 +614,7 @@ void printPreorder(struct Node* node)
     printPreorder(node->right); 
 }
 
-//inorder tree traversal
+//11.inorder tree traversal
 
 
 struct tNode {
@@ -735,7 +664,7 @@ struct tNode* newtNode(int data)
     return (node);
 }
 
-//program for avl tree
+//12.program for avl tree
 
 class Node
 {
