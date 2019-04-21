@@ -496,6 +496,9 @@ void printArray(int arr[], int n)
     cout << "\n";
 }
 
+
+//queue array implementation
+
 //9.queue array implementation
 
 class Queue  
