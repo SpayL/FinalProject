@@ -860,6 +860,27 @@ int main()
   cout << "Index of the element is : " <<
            pivotedBinarySearch(arr1, n, key);
 
+  //2.
+
+    Node* head = NULL;
+    push(&head, 1);
+    push(&head, 4);
+    push(&head, 1);
+    push(&head, 12);
+    push(&head, 1);
+    cout << "Deleting linked list";
+    deleteList(&head);
+    cout << "\nLinked list deleted";
+
+//3.
+
+    int arr[] = {64, 25, 12, 22, 11}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    selectionSort(arr, n); 
+    printf("Sorted array: \n"); 
+    printArray(arr, n); 
+    return 0; 
+
 //4.
   int z;
   z = addition (5,3);
