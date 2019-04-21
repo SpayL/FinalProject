@@ -846,3 +846,174 @@ void preOrder(Node *root)
         preOrder(root->right);
     }
 }
+
+//main declared
+
+int main()
+{
+ //1.
+  int arr1[] = {5, 6, 7, 8, 9, 10, 1, 2, 3};
+  int n = sizeof(arr1)/sizeof(arr1[0]);
+  int key = 3;
+
+
+  cout << "Index of the element is : " <<
+           pivotedBinarySearch(arr1, n, key);
+
+//4.
+  int z;
+  z = addition (5,3);
+  cout << "The result is " << z;
+
+//5
+    gfg g;
+    int a[] = {1, 2, 4, 5, 6};
+    int miss = g.getMissingNo(a, 5);
+    cout << miss;
+
+
+//6
+    int arr[] = {1, 2, 3, 4, 5, 6};
+    printArray(arr, 6);
+    rvereseArray(arr, 0, 5);
+    cout << "Reversed array is" << endl;
+    printArray(arr, 6);
+    return 0;
+
+//7
+    int choice, nodes, element, position, i;
+    single_llist sl;
+    start = NULL;
+    while (1)
+    {
+        cout<<endl<<"---------------------------------"<<endl;
+        cout<<endl<<"Operations on singly linked list"<<endl;
+        cout<<endl<<"---------------------------------"<<endl;
+        cout<<"1.Insert Node at beginning"<<endl;
+        cout<<"2.Insert node at last"<<endl;
+        cout<<"3.Insert node at position"<<endl;
+        cout<<"4.Sort Link List"<<endl;
+        cout<<"5.Delete a Particular Node"<<endl;
+        cout<<"6.Update Node Value"<<endl;
+        cout<<"7.Search Element"<<endl;
+        cout<<"8.Display Linked List"<<endl;
+        cout<<"9.Reverse Linked List "<<endl;
+        cout<<"10.Exit "<<endl;
+        cout<<"Enter your choice : ";
+        cin>>choice;
+        switch(choice)
+        {
+        case 1:
+            cout<<"Inserting Node at Beginning: "<<endl;
+            sl.insert_begin();
+            cout<<endl;
+            break;
+        case 2:
+            cout<<"Inserting Node at Last: "<<endl;
+            sl.insert_last();
+            cout<<endl;
+            break;
+        case 3:
+            cout<<"Inserting Node at a given position:"<<endl;
+            sl.insert_pos();
+            cout<<endl;
+            break;
+        case 4:
+            cout<<"Sort Link List: "<<endl;
+            sl.sort();
+            cout<<endl;
+            break;
+        case 5:
+            cout<<"Delete a particular node: "<<endl;
+            sl.delete_pos();
+            break;
+        case 6:
+            cout<<"Update Node Value:"<<endl;
+            sl.update();
+            cout<<endl;
+            break;
+        case 7:
+            cout<<"Search element in Link List: "<<endl;
+            sl.search();
+            cout<<endl;
+            break;
+        case 8:
+            cout<<"Display elements of link list"<<endl;
+            sl.display();
+            cout<<endl;
+            break;
+        case 9:
+            cout<<"Reverse elements of Link List"<<endl;
+            sl.reverse();
+            cout<<endl;
+            break;
+        case 10:
+            cout<<"Exiting..."<<endl;
+            exit(1);
+            break;
+        default:
+            cout<<"Wrong choice"<<endl;
+        }
+    }
+
+
+//8.
+
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    heapSort(arr, n);
+    cout << "Sorted array is \n";
+    printArray(arr, n);
+
+//9.
+
+    Queue* queue = createQueue(1000);
+    enqueue(queue, 10);
+    enqueue(queue, 20);
+    enqueue(queue, 30);
+    enqueue(queue, 40);
+    cout<<dequeue(queue)<<" dequeued from queue\n";
+    cout << "Front item is " << front(queue) << endl;
+    cout << "Rear item is " << rear(queue) << endl;
+
+//10
+
+    struct Node *root = new Node(1);
+    root->left             = new Node(2);
+    root->right         = new Node(3);
+    root->left->left     = new Node(4);
+    root->left->right = new Node(5);
+    cout << "\nPreorder traversal of binary tree is \n";
+    printPreorder(root);
+    cout << "\nInorder traversal of binary tree is \n";
+    printInorder(root);
+    cout << "\nPostorder traversal of binary tree is \n";
+    printPostorder(root);
+
+//11
+
+
+    struct tNode* root = newtNode(1);
+    root->left = newtNode(2);
+    root->right = newtNode(3);
+    root->left->left = newtNode(4);
+    root->left->right = newtNode(5);
+    MorrisTraversal(root);
+
+
+//12
+
+
+    Node *root = NULL;
+    root = insert(root, 10);
+    root = insert(root, 20);
+    root = insert(root, 30);
+    root = insert(root, 40);
+    root = insert(root, 50);
+    root = insert(root, 25);
+    cout << "Preorder traversal of the "
+            "constructed AVL tree is \n";
+    preOrder(root);
+
+    return 0;
+}
