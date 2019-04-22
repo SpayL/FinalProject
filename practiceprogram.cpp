@@ -781,8 +781,8 @@ void preOrder(Node *root)
         preOrder(root->left);
         preOrder(root->right);
     }
-}
 
+}
 //main declared
 
 int main()
@@ -971,6 +971,20 @@ int main()
     cout << "Preorder traversal of the "
             "constructed AVL tree is \n";
     preOrder(root);
+
+    return 0;
+}
+//check for even or odd
+{
+    int n;
+
+    cout << "Enter an integer: ";
+    cin >> n;
+
+    if ( n % 2 == 0)
+        cout << n << " is even.";
+    else
+        cout << n << " is odd.";
 
     return 0;
 }
