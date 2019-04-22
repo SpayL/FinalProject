@@ -2,8 +2,24 @@
 #include <bits/stdc++.h>
 using namespace std; 
 
+//program for fibonacci series
+ void printFibonacciNumbers(int n)  
+{  
+    int f1 = 0, f2 = 1, i;  
+  
+    if (n < 1)  
+        return;  
+  
+    for (i = 1; i <= n; i++)  
+    {  
+        cout<<f2<<" ";  
+        int next = f1 + f2;  
+        f1 = f2;  
+        f2 = next;  
+    }  
+}
 
-  //1.Program to search an element in a sorted and pivoted array
+//2Program to search an element in a sorted and pivoted array
 
 int binarySearch(int arr[], int low,int high, int key) { 
   if (high < low) 
@@ -788,6 +804,8 @@ void preOrder(Node *root)
 int main()
 {
  //1.
+	 printFibonacciNumbers(7);
+	
   int arr1[] = {5, 6, 7, 8, 9, 10, 1, 2, 3};
   int n = sizeof(arr1)/sizeof(arr1[0]);
   int key = 3;
